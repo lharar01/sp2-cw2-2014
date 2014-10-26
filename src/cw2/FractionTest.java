@@ -1,3 +1,4 @@
+package cw2;
 /**
  * Created by keith for the second coursework assignment.
  *
@@ -21,6 +22,26 @@ public class FractionTest {
 	test(new Fraction(4, -8),new Fraction(1, 2),"error test 5");
 
         // extend with extra tests
+	// Add:
+	Fraction i = new Fraction(2,15);
+	Fraction j = new Fraction(5,25);
+	System.out.println(i + " + " + j + " = " + i.add(j));
+	
+	// Add:
+	Fraction k = new Fraction(4,35);
+	Fraction l = new Fraction(9,53);
+	System.out.println(k + " + " + l + " = " + k.add(l));
+	//System.out.println("The result should be " + new Fraction(527,1855));
+	
+	// Subtract:
+	Fraction m = new Fraction(4,35);
+	Fraction n = new Fraction(9,53);
+	System.out.println(m + " - " + n + " = " + m.subtract(n));
+	
+	// Divide:
+	Fraction o = new Fraction(1,3);
+	Fraction p = new Fraction(1,3);
+	System.out.println(o + " / " + p + " = " + o.divide(p));
     }
 
     static void test(Fraction f1, Fraction f2, String msg){

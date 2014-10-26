@@ -1,3 +1,4 @@
+package cw2;
 /**
  * Created by keith for the second coursework assignment.
  */
@@ -16,7 +17,7 @@ public class Fraction {
         setDenominator(denom / gcd);
     }
 
-    @Override
+    //@Override
     public String toString() {
         return "" + getNumerator() + '/' + getDenominator();
     }
@@ -37,7 +38,7 @@ public class Fraction {
         denominator = num;
     }
 
-    @Override
+    //@Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -50,7 +51,7 @@ public class Fraction {
         return true;
     }
 
-    @Override
+    //@Override
     public int hashCode() {
         int result = numerator;
         result = 31 * result + denominator;
@@ -58,10 +59,39 @@ public class Fraction {
     }
 
     public Fraction multiply(Fraction other) {
-
         int num = this.getNumerator() * other.getNumerator();
         int denom = this.getDenominator() * other.getDenominator();
         return new Fraction(num, denom);
+    }
+    
+    public Fraction add(Fraction other) {
+    	int num = this.getNumerator()*other.getDenominator() + other.getNumerator()*this.getDenominator();
+    	int denom = this.getDenominator()*other.getDenominator();
+    	return new Fraction(num, denom);
+    }
+    
+    public Fraction subtract(Fraction other) {
+    	int num = this.getNumerator()*other.getDenominator() - other.getNumerator()*this.getDenominator();
+    	int denom = this.getDenominator()*other.getDenominator();
+    	return new Fraction(num, denom);
+    }
+    
+    public Fraction divide(Fraction other) {
+    	Fraction reversedOther = new Fraction(other.getDenominator(), other.getNumerator());
+    	return this.multiply(reversedOther);
+    }
+    
+    public double absValue() {
+    	double fractionValue = this.getNumerator()/this.getDenominator();
+    	if(fractionValue <= 0) {
+    		Fraction neg = negate();
+    		return neg.getNumerator() / neg.getDenominator();
+    	}
+    	return fractionValue;
+    }
+    
+    public Fraction negate() {
+    	return new Fraction(this.getNumerator()*-1, this.getDenominator());
     }
 
     private int myGcd(int a, int b) {
