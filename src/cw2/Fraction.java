@@ -19,6 +19,14 @@ public class Fraction {
 
     //@Override
     public String toString() {
+    	if(this.getDenominator() == 1) {
+    		return Integer.toString(this.getDenominator());
+    	}
+    	else {
+    		if(this.getNumerator() == 0) {
+    			return "0";
+    		}
+    	}
         return "" + getNumerator() + '/' + getDenominator();
     }
 
@@ -81,13 +89,22 @@ public class Fraction {
     	return this.multiply(reversedOther);
     }
     
-    public double absValue() {
-    	double fractionValue = this.getNumerator()/this.getDenominator();
+    public Fraction absValue() {
+    	/*double fractionValue = this.getNumerator()/this.getDenominator();
     	if(fractionValue <= 0) {
     		Fraction neg = negate();
     		return neg.getNumerator() / neg.getDenominator();
     	}
-    	return fractionValue;
+    	return fractionValue;*/
+    	Fraction absFrac = new Fraction(this.getNumerator(), this.getDenominator());
+    	if(absFrac.getNumerator() < 0) {
+    		absFrac.setNumerator(absFrac.getNumerator() * -1);
+    	}
+    	if(absFrac.getDenominator() < 0) {
+    		absFrac.setDenominator(absFrac.getDenominator() * -1);
+    	}
+    	
+    	return absFrac; 
     }
     
     public Fraction negate() {
