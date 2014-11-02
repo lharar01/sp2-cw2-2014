@@ -15,12 +15,13 @@ public class Fraction {
         int gcd = myGcd(num, denom);
         setNumerator(num / gcd);
         setDenominator(denom / gcd);
+        fixNegDomFrac();
     }
 
     //@Override
     public String toString() {
     	if(this.getDenominator() == 1) {
-    		return Integer.toString(this.getDenominator());
+    		return Integer.toString(this.getNumerator());
     	}
     	else {
     		if(this.getNumerator() == 0) {
@@ -118,5 +119,12 @@ public class Fraction {
             a = t;
         }
         return a;
+    }
+    
+    private void fixNegDomFrac() {
+    	if(this.getDenominator() < 0) {
+    		this.setNumerator(this.getNumerator() * -1);
+    		this.setDenominator(this.getDenominator() * -1);
+    	}
     }
 }
