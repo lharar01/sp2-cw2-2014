@@ -1,17 +1,20 @@
+// This JUnit class tests class FractionCalculator's "evaluate" method to ensure it is working correctly. It calls
+// the method with a string which attempts to includes most of the scenarios that the method could encounter.
+// Created by Liran Harary, student number 12837230.
+// Submitted on: 07.11.2014
+
 package cw2;
-import java.util.Scanner;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
 
 public class FractionCalculatorTest {
-	public static void main(String[] args) {
-		Scanner input = new Scanner(System.in);
-		String[] quit = {"q", "Q", "quit"};
-		System.out.println("0\nWelcome to Liran's calculator!\nPlease enter a line to calculate\n");
-		String userInput = input.nextLine();
-		while(!FractionCalculator.inStringArray(quit, userInput)) {
-			System.out.println("\nResult: " + FractionCalculator.evaluate(new Fraction(0,1), userInput) + "\n\nEnter a line to calculate, or 'q'/'Q'/'quit' to quit\n");
-			userInput = input.nextLine();
-		}
-		System.out.print("\nGoodbye.");
-		input.close();
+	@Test
+	public void testEvaluate() {
+		String input = "5/10 + 1/6 - 1/7 * 23/5 / 3 neg * 1/-7 * -1 abs";
+		Fraction startFrac = new Fraction(1,5);
+		Fraction correctResult = new Fraction(253,2205);
+		assertEquals("Wrong answer", correctResult, FractionCalculator.evaluate(startFrac, input));
 	}
 }
